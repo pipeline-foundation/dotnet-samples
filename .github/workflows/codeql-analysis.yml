@@ -37,6 +37,7 @@ jobs:
       - name: Build project
         shell: pwsh
         run: |
+          nuget restore ${{ matrix.csproj }}
           dotnet build ${{ matrix.csproj }}
 
       - name: Perform CodeQL Analysis
