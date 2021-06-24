@@ -41,7 +41,7 @@ jobs:
         shell: pwsh
         run: |
           nuget restore ${{ matrix.projects }}
-          msbuild ${{ matrix.projects }}
+          msbuild ${{ matrix.projects }} /p:UseSharedCompilation=false
 
 
 
