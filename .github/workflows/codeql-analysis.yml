@@ -23,6 +23,9 @@ jobs:
           'WinForms-HDPI/SystemAware/HighDpiDemo.csproj'
         ]
     steps:
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.0.2
+
       - name: Checkout repository
         id: checkout_repo
         uses: actions/checkout@v2
@@ -35,10 +38,11 @@ jobs:
           queries: security-and-quality
 
       - name: Build project
+        continue-on-error: true
         shell: pwsh
         run: |
           nuget restore ${{ matrix.csproj }}
-          dotnet build ${{ matrix.csproj }}
+          msbuild ${{ matrix.csproj }}
 
       - name: Perform CodeQL Analysis
         id: analyze_codeql
