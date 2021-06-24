@@ -18,8 +18,7 @@ jobs:
           'Microsoft.Diagnostics.Tracing\TraceEvent\TraceEvent.sln',
           'System.Numerics\SIMD\System.Numerics.Vectors.SampleCode.sln',
           'System.Reflection.Metadata\MdDumper\MdDumper.csproj',
-          'WinForms-HDPI\PerMonitorAware\PerMonitorDemo.sln',
-          'WinForms-HDPI\SystemAware\HighDpiDemo.sln'
+          'WinForms-HDPI\PerMonitorAware\PerMonitorDemo.sln'
         ]
     steps:
       - name: Add msbuild to PATH
@@ -43,6 +42,8 @@ jobs:
           nuget restore ${{ matrix.projects }}
           msbuild ${{ matrix.projects }} /p:UseSharedCompilation=false
 
-
+      - name: Perform CodeQL Analysis
+        id: analyze_codeql
+        uses: github/codeql-action/analyze@v1
 
 # Built with ❤ by [Pipeline Foundation](https://pipeline.foundation)
