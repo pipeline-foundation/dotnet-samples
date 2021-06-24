@@ -41,8 +41,7 @@ jobs:
         continue-on-error: true
         shell: pwsh
         run: |
-          nuget restore ${{ matrix.csproj }} -PackagesDirectory packages/
-          msbuild ${{ matrix.csproj }}
+          msbuild ${{ matrix.csproj }} -t:restore,build
 
       - name: Perform CodeQL Analysis
         id: analyze_codeql
