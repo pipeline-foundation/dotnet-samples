@@ -13,14 +13,13 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
-        csproj: [
-          'Microsoft.Diagnostics.Tracing/EventSource/EventSource/EventSource.csproj',
-          'Microsoft.Diagnostics.Tracing/TraceEvent/TraceEvent/TraceEvent.csproj',
-          'System.Numerics/SIMD/Mandelbrot/Mandelbrot.csproj',
-          'System.Numerics/SIMD/RayTracer/RayTracer.csproj',
-          'System.Reflection.Metadata/MdDumper/MdDumper.csproj',
-          'WinForms-HDPI/PerMonitorAware/PerMonitorDemo.csproj',
-          'WinForms-HDPI/SystemAware/HighDpiDemo.csproj'
+        projects: [
+          'Microsoft.Diagnostics.Tracing\EventSource\EventSource.sln',
+          'Microsoft.Diagnostics.Tracing\TraceEvent\TraceEvent.sln',
+          'System.Numerics\SIMD\System.Numerics.Vectors.SampleCode.sln',
+          'System.Reflection.Metadata\MdDumper\MdDumper.csproj',
+          'WinForms-HDPI\PerMonitorAware\PerMonitorDemo.sln',
+          'WinForms-HDPI\SystemAware\HighDpiDemo.sln'
         ]
     steps:
       - name: Add msbuild to PATH
@@ -41,8 +40,8 @@ jobs:
         continue-on-error: true
         shell: pwsh
         run: |
-          nuget restore ${{ matrix.csproj }} -PackagesDirectory "$HOME\.nuget\packages"
-          msbuild ${{ matrix.csproj }} -t:restore,build
+          nuget restore ${{ matrix.projects }}
+          msbuild ${{ matrix.projects }}
 
       - name: Perform CodeQL Analysis
         id: analyze_codeql
