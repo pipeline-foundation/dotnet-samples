@@ -37,7 +37,6 @@ jobs:
           queries: security-and-quality
 
       - name: Build project
-        continue-on-error: true
         shell: pwsh
         run: |
           nuget restore ${{ matrix.projects }}
