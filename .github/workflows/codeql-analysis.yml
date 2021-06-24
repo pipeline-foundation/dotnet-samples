@@ -42,8 +42,6 @@ jobs:
           nuget restore ${{ matrix.projects }}
           msbuild ${{ matrix.projects }}
 
-      - name: Perform CodeQL Analysis
-        id: analyze_codeql
-        uses: github/codeql-action/analyze@v1
+
 
 # Built with ❤ by [Pipeline Foundation](https://pipeline.foundation)
