@@ -36,7 +36,6 @@ jobs:
 
       - name: Build project
         continue-on-error: true
-        shell: pwsh
         run: |
           nuget restore ${{ matrix.projects }}
           msbuild ${{ matrix.projects }} /p:UseSharedCompilation=false
