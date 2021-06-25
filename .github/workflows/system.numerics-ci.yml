@@ -33,7 +33,7 @@ jobs:
 
       - name: Build RayTracer project
         run: |
-          msbuild System.Numerics\SIMD\RayTracer\RayTracer.csproj -p:Configuration=Release -p:Platform='Any CPU' -p:OutDir="${{ github.workspace }}\RayTracer Build Output"
+          msbuild System.Numerics\SIMD\RayTracer\RayTracer.csproj -p:Configuration=Release -p:Platform='AnyCPU' -p:OutDir="${{ github.workspace }}\RayTracer Build Output"
 
       - name: Upload Mandelbrot build output as pipeline artifact
         uses: actions/upload-artifact@v1
