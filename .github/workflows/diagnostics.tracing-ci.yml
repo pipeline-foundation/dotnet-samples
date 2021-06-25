@@ -23,23 +23,27 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
-      - name: Build EventSource solution
+      - name: Restore EventSource solution
         run: |
           nuget restore Microsoft.Diagnostics.Tracing\EventSource\EventSource.sln
 
-          msbuild Microsoft.Diagnostics.Tracing\EventSource\EventSource.sln -p:Configuration=Release -p:Platform='Any CPU' -p:OutDir="${{ github.workspace }}\EventSource Build Output"
-
-      - name: Build TraceEvent solution
+      - name: Build EventSource solution
         run: |
-          nuget restore Microsoft.Diagnostics.Tracing\TraceEvent\TraceEvent.sln
-
-          msbuild Microsoft.Diagnostics.Tracing\TraceEvent\TraceEvent.sln -p:Configuration=Release -p:Platform='Any CPU' -p:OutDir="${{ github.workspace }}\TraceEvent Build Output"
+          msbuild Microsoft.Diagnostics.Tracing\EventSource\EventSource.sln -p:Configuration=Release -p:Platform='Any CPU' -p:OutDir="${{ github.workspace }}\EventSource Build Output"
 
       - name: Upload EventSource build output as pipeline artifact
         uses: actions/upload-artifact@v1
         with:
           name: EventSource Build Output
           path: 'EventSource Build Output/'
+
+      - name: Restore TraceEvent solution
+        run: |
+          nuget restore Microsoft.Diagnostics.Tracing\TraceEvent\TraceEvent.sln
+
+      - name: Build TraceEvent solution
+        run: |
+          msbuild Microsoft.Diagnostics.Tracing\TraceEvent\TraceEvent.sln -p:Configuration=Release -p:Platform='Any CPU' -p:OutDir="${{ github.workspace }}\TraceEvent Build Output"
 
       - name: Upload TraceEvent build output as pipeline artifact
         uses: actions/upload-artifact@v1
