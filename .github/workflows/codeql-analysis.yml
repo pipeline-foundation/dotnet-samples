@@ -26,11 +26,9 @@ jobs:
         uses: microsoft/setup-msbuild@v1.0.2
 
       - name: Checkout repository
-        id: checkout_repo
         uses: actions/checkout@v2
 
       - name: Initialize CodeQL
-        id: init_codeql
         uses: github/codeql-action/init@v1
         with:
           languages: csharp
@@ -44,7 +42,6 @@ jobs:
           msbuild ${{ matrix.projects }} /p:UseSharedCompilation=false
 
       - name: Perform CodeQL Analysis
-        id: analyze_codeql
         uses: github/codeql-action/analyze@v1
 
 # Built with ❤ by [Pipeline Foundation](https://pipeline.foundation)
