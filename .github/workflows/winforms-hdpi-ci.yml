@@ -33,11 +33,11 @@ jobs:
 
       - name: Build PerMonitorAware solution
         run: |
-          msbuild WinForms-HDPI\PerMonitorAware\PerMonitorDemo.sln -p:Configuration=Release -p:Platform='AnyCPU' -p:OutDir="${{ github.workspace }}\PerMonitorAware Build Output"
+          msbuild WinForms-HDPI\PerMonitorAware\PerMonitorDemo.sln -p:Configuration=Release -p:Platform='Any CPU' -p:OutDir="${{ github.workspace }}\PerMonitorAware Build Output"
 
       - name: Build SystemAware solution
         run: |
-          msbuild WinForms-HDPI\SystemAware\HighDpiDemo.sln -p:Configuration=Release -p:Platform='AnyCPU' -p:OutDir="${{ github.workspace }}\SystemAware Build Output"
+          msbuild WinForms-HDPI\SystemAware\HighDpiDemo.sln -p:Configuration=Release -p:Platform='Any CPU' -p:OutDir="${{ github.workspace }}\SystemAware Build Output"
 
       - name: Upload PerMonitorAware build output as pipeline artifact
         uses: actions/upload-artifact@v1
