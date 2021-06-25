@@ -26,12 +26,12 @@ jobs:
       - name: Build EventSource solution
         run: |
           nuget restore Microsoft.Diagnostics.Tracing\EventSource\EventSource.sln
-          msbuild Microsoft.Diagnostics.Tracing\EventSource\EventSource.sln -p:Configuration=Release -p:Platform=AnyCPU -p:OutDir="${{ github.workspace }}\EventSource Build Output"
+          msbuild Microsoft.Diagnostics.Tracing\EventSource\EventSource.sln -p:Configuration=Release -p:Platform='Any CPU' -p:OutDir="${{ github.workspace }}\EventSource Build Output"
 
       - name: Build TraceEvent solution
         run: |
           nuget restore Microsoft.Diagnostics.Tracing\TraceEvent\TraceEvent.sln
-          msbuild Microsoft.Diagnostics.Tracing\TraceEvent\TraceEvent.sln -p:Configuration=Release -p:Platform=AnyCPU -p:OutDir="${{ github.workspace }}\TraceEvent Build Output"
+          msbuild Microsoft.Diagnostics.Tracing\TraceEvent\TraceEvent.sln -p:Configuration=Release -p:Platform='Any CPU' -p:OutDir="${{ github.workspace }}\TraceEvent Build Output"
 
       - name: Upload EventSource build output as pipeline artifact
         uses: actions/upload-artifact@v1
