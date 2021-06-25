@@ -18,7 +18,8 @@ jobs:
           'Microsoft.Diagnostics.Tracing\TraceEvent\TraceEvent.sln',
           'System.Numerics\SIMD\System.Numerics.Vectors.SampleCode.sln',
           'System.Reflection.Metadata\MdDumper\MdDumper.csproj',
-          'WinForms-HDPI\PerMonitorAware\PerMonitorDemo.sln'
+          'WinForms-HDPI\PerMonitorAware\PerMonitorDemo.sln',
+          'WinForms-HDPI\SystemAware\HighDpiDemo.sln'
         ]
     steps:
       - name: Add msbuild to PATH
